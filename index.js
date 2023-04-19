@@ -22,7 +22,7 @@ http
 
       return "ok";
     } else if (req.url == "/download") {
-      let img = "./uploads/setting-mapSAK.json";
+      let img = "./uploads/setting-mapRUS.json";
       console.log("img", img);
       fs.access(img, fs.constants.F_OK, (err) => {
         //check that we can access  the file
@@ -48,11 +48,26 @@ http
         //check that we can access  the file
         console.log(`${item} ${err ? "does not exist" : "exists"}`);
       });
-
+     
       fs.readFile(item, function (err, content) {
         if (err) {
-          res.writeHead(404, { "Content-type": "text/html" });
-          res.end("<h1>No such image</h1>");
+          let mapRUS = "./uploads/setting-mapRUS.json";
+          fs.access(mapRUS, fs.constants.F_OK, (err) => {
+            //check that we can access  the file
+            console.log(`${item} ${err ? "does not exist" : "exists"}`);
+          });
+          fs.readFile(mapRUS, function (err, content) {
+            if (err) {
+              let img = "./uploads/setting-mapRUS.json";
+              res.writeHead(404, { "Content-type": "text/html" });
+              res.end("<h1>No such image</h1>");
+            } else {
+              //specify the content type in the response will be an image
+              res.setHeader('Access-Control-Allow-Headers', '*');
+              res.writeHead(200, { "Content-type": "text/json" });
+              res.end(content);
+            }
+          });
         } else {
           //specify the content type in the response will be an image
           res.setHeader('Access-Control-Allow-Headers', '*');
