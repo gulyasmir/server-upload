@@ -55,6 +55,7 @@ http
           res.end("<h1>No such image</h1>");
         } else {
           //specify the content type in the response will be an image
+          res.setHeader('Access-Control-Allow-Headers', '*');
           res.writeHead(200, { "Content-type": "text/json" });
           res.end(content);
         }
