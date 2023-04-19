@@ -1,7 +1,7 @@
 var http = require("http");
 var formidable = require("formidable");
 var fs = require("fs");
-
+var port=process.env.PORT||'8080';
 http
   .createServer(function (req, res) {
     if (req.url == "/fileupload") {
@@ -61,4 +61,4 @@ http
       });
     }
   })
-  .listen(8080);
+  .listen(port);
