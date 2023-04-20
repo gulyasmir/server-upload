@@ -1,0 +1,13 @@
+{
+    "name": "Республика Саха/Якутия",
+    "sources": {
+      "me": "RU14-00000-0000",
+      "parts": ["RU14-00000-0001", "RU14-00000-0002"],
+      "towns": ["RU14-50000-0000", "RU14-50000-0000"]
+    },
+    "dataseries": {
+      "alerts": "ATM-AIT-EMRG-IXXXXXXXXXX",
+      "forecasts": "ATM-AIT-EMRG-IXXXXXXXXXX"
+    }
+  }
+  

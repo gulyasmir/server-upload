@@ -1,0 +1,13 @@
+{
+    "name": "Республика Башкортостан",
+    "sources": {
+      "me": "RU02-00000-0000",
+      "parts": [],
+      "towns": ["RU02-50000-0000", "RU02-50000-0000"]
+    },
+    "dataseries": {
+      "alerts": "ATM-AIT-EMRG-IXXXXXXXXXX",
+      "forecasts": "ATM-AIT-EMRG-IXXXXXXXXXX"
+    }
+  }
+  
