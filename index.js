@@ -25,6 +25,7 @@ http
       res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
       res.writeHead(200, { "Content-type": "text/html" });
       res.write("<h1>ОК</h1>");
+      res.end();
 
     } else if (req.url == "/download") {
       let img = "./uploads/setting-mapRUS.json";
