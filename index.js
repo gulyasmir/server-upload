@@ -14,6 +14,15 @@ http
           var originalFilename = file[0].originalFilename;
           var newpath = "./uploads/" + originalFilename;
 
+          fs.access(newpath, fs.constants.F_OK, (err) => {
+            oldfile = `${newpath}1`
+            fs.rename(newpath, oldfile, function (err, data) {
+              if (err) {
+                throw err;
+              }          
+            });
+          });
+
           fs.rename(oldpath, newpath, function (err, data) {
             if (err) {
               throw err;
