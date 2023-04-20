@@ -11,11 +11,13 @@ http
 
         for (const file of arr) {
           var oldpath = file[0].filepath;
-          var newpath = "./uploads/" + file[0].originalFilename;
+          var originalFilename = file[0].originalFilename;
+          var newpath = "./uploads/" + originalFilename;
+
           fs.rename(oldpath, newpath, function (err, data) {
             if (err) {
               throw err;
-            }
+            }          
           });
         }
       });
@@ -24,28 +26,11 @@ http
       res.setHeader('Access-Control-Allow-Credentials', 'true');
       res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
       res.writeHead(200, { "Content-type": "text/html" });
-      res.write("<h1>ОК</h1>");
+      res.write("<h1>Загрузились</h1>");
       res.end();
 
-    } else if (req.url == "/download") {
-      let img = "./uploads/setting-mapRUS.json";
-     
-      fs.access(img, fs.constants.F_OK, (err) => {
-        //check that we can access  the file
-        console.log(`${img} ${err ? "does not exist" : "exists"}`);
-      });
 
-      fs.readFile(img, function (err, content) {
-        if (err) {
-          res.writeHead(404, { "Content-type": "text/html" });
-          res.end("<h1>server for upload files</h1>");
-        } else {
-          //specify the content type in the response will be an image
-          res.writeHead(200, { "Content-type": "text/json" });
-          res.end(content);
-        }
-      });
-    } else {
+    } else { // download/...
      
       let itemPatch =  req.url.slice(10);
       let item = `./uploads/${itemPatch}`;
