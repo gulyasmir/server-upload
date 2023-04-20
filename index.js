@@ -21,8 +21,10 @@ http
       });
       res.setHeader('Access-Control-Allow-Headers', '*');
       res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Credentials', 'true');
+      res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
       res.writeHead(200, { "Content-type": "text/html" });
-      res.end("<h1>ОК</h1>");
+      res.write("<h1>ОК</h1>");
 
     } else if (req.url == "/download") {
       let img = "./uploads/setting-mapRUS.json";
