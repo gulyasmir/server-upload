@@ -24,14 +24,32 @@ http
       res.writeHead(200, { "Content-type": "text/json" });
       res.end();
 
+    } else if (req.url == "/download") {
+      let img = "./uploads/setting-mapRUS.json";
+     
+      fs.access(img, fs.constants.F_OK, (err) => {
+        //check that we can access  the file
+        console.log(`${img} ${err ? "does not exist" : "exists"}`);
+      });
+
+      fs.readFile(img, function (err, content) {
+        if (err) {
+          res.writeHead(404, { "Content-type": "text/html" });
+          res.end("<h1>No such image</h1>");
+        } else {
+          //specify the content type in the response will be an image
+          res.writeHead(200, { "Content-type": "text/json" });
+          res.end(content);
+        }
+      });
     } else {
      
       let itemPatch =  req.url.slice(10);
       let item = `./uploads/${itemPatch}`;
-    
+      console.log("item", item);
       fs.access(item, fs.constants.F_OK, (err) => {
         //check that we can access  the file
-      //  console.log(`${item} ${err ? "does not exist" : "exists"}`);
+        console.log(`${item} ${err ? "does not exist" : "exists"}`);
       });
      
       fs.readFile(item, function (err, content) {
@@ -39,12 +57,15 @@ http
           let mapRUS = "./uploads/setting-mapRUS.json";
           fs.access(mapRUS, fs.constants.F_OK, (err) => {
             //check that we can access  the file
-            //console.log(`${item} ${err ? "does not exist" : "exists"}`);
+            console.log(`${item} ${err ? "does not exist" : "exists"}`);
           });
           fs.readFile(mapRUS, function (err, content) {
             if (err) {
+              let img = "./uploads/setting-mapRUS.json";
+              res.setHeader('Access-Control-Allow-Headers', '*');
+              res.setHeader('Access-Control-Allow-Origin', '*');
               res.writeHead(404, { "Content-type": "text/html" });
-              res.end("<h1>server for upload files</h1>");
+              res.end("<h1>No such image</h1>");
             } else {
               //specify the content type in the response will be an image
               res.setHeader('Access-Control-Allow-Headers', '*');
