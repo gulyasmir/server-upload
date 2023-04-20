@@ -19,10 +19,7 @@ http
           });
         }
       });
-      res.setHeader('Access-Control-Allow-Headers', '*');
-      res.setHeader('Access-Control-Allow-Origin', '*');
-      res.writeHead(200, { "Content-type": "text/json" });
-      res.end();
+     return res
 
     } else if (req.url == "/download") {
       let img = "./uploads/setting-mapRUS.json";
