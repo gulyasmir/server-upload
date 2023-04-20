@@ -35,7 +35,7 @@ http
       fs.readFile(img, function (err, content) {
         if (err) {
           res.writeHead(404, { "Content-type": "text/html" });
-          res.end("<h1>No such image</h1>");
+          res.end("<h1>server for upload files</h1>");
         } else {
           //specify the content type in the response will be an image
           res.writeHead(200, { "Content-type": "text/json" });
