@@ -26,7 +26,7 @@ http
         res.setHeader('Access-Control-Allow-Credentials', 'true');
         res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
         res.writeHead(200, { "Content-type": "text/html" });
-        res.write("<h1>Загрузились</h1>");
+        res.write(`<h1>Загрузились ${newpath}</h1>`);
         console.log('res', res)
         res.end();
 
