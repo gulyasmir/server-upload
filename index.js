@@ -16,6 +16,7 @@ http
 
           fs.access(newpath, fs.constants.F_OK, (err) => {
             oldfile = `${newpath}1`
+            console.log('oldfile', oldfile)
             fs.rename(newpath, oldfile, function (err, data) {
               if (err) {
                 throw err;
